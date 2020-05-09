@@ -10,32 +10,62 @@ from rgbmatrix import graphics
 
 options = RGBMatrixOptions()
         
-options.rows = 32
-options.cols = 64
-options.chain_length = 2
-options.parallel = 1
-options.row_address_type = 0
-options.multiplexing = 0
-options.pwm_bits = 11
-options.brightness = 100
-options.pwm_lsb_nanoseconds = 130
-options.led_rgb_sequence = 'RGB'
-options.pixel_mapper_config = ''
+options.rows = 32 # 32 rows per display
+options.cols = 64 # 64 rows per display (64x32)
+options.chain_length = 1 # 2 displays per chain (128x32)
+options.parallel = 1 # 3 (128x96)
                 
-matrix = RGBMatrix(options = options)
-  
+matrix = RGBMatrix(options = options)  
+
+bug1 = '''
+       ..**********
+       ..**********
+       ..**..**..**
+       ..**..**..**
+       ****........
+       ****........
+       ****........
+       ****........
+       ..**..**..**
+       ..**..**..**
+       ..**********
+       ..**********
+       '''
+       
+bug2 = '''
+       ..****......
+       ..****......
+       ..**********
+       ..**********
+       ****..**..**
+       ****..**..**
+       ****..**..**
+       ****..**..**
+       ..**********
+       ..**********
+       ..****......
+       ..****......
+       '''
+
+def draw_graphic(x,y,data,color,canvas):
+    data = data.replace(' ','').replace('\n','')    
+    pos = 0 
+    for j in range(12):
+        for i in range(12):
+            if data[pos]=='*':
+                canvas.SetPixel(x+i,y+j,100,255,255) 
+            pos+=1
+    
                 
 while True:       
     
-    X0 = 128-10-2
-    Y0 = 10
-    
-    offscreen_canvas = matrix.CreateFrameCanvas()    
-    
-    for y in range(10):
-        for x in range(10):    
-            offscreen_canvas.SetPixel(X0+x,Y0+y,100,255,255)
-    
+    offscreen_canvas = matrix.CreateFrameCanvas()       
+    draw_graphic(10,10,bug1,1,offscreen_canvas)    
     matrix.SwapOnVSync(offscreen_canvas)
-    time.sleep(1) 
+    time.sleep(0.25) 
+    
+    offscreen_canvas = matrix.CreateFrameCanvas()       
+    draw_graphic(10,10,bug2,1,offscreen_canvas)    
+    matrix.SwapOnVSync(offscreen_canvas)
+    time.sleep(0.25) 
     
