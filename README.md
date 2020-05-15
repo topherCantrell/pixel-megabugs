@@ -22,3 +22,7 @@ If I am reading this right:
   - `led-parallel=3` Three chains (128x96)
   
 https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
+
+# Three PI version
+
+![](art/threepi.jpg)
