@@ -23,6 +23,10 @@ If I am reading this right:
   
 https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
 
+# The Frame
+
+![](art/frame.jpg)
+
 # Three PI version
 
 ![](art/threepi.jpg)
