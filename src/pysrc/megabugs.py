@@ -117,13 +117,13 @@ def draw_maze_test(pic,canvas):
         for x in range(20):
             canvas.SetPixel(x*4+25,y*4+17,*COLORS[3])
 
-canvas = matrix.CreateFrameCanvas()
-
-mega = MegaMaze(20,16,192)
-draw_maze(mega._maze,canvas)
-
-matrix.SwapOnVSync(canvas)
-
 while True:
+    canvas = matrix.CreateFrameCanvas()
+    
+    mega = MegaMaze(20,16,192)
+    draw_maze(mega._maze,canvas)
+    
+    matrix.SwapOnVSync(canvas)
+
     time.sleep(1)
     
