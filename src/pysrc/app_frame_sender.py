@@ -3,11 +3,12 @@ import socket
 import time
 import json
 
-COLORS = [[0,0,0],[50,0,0],[0,0,50],[50,50,50]]
+COLORS1 = [[0,0,0],[50,0,0],[0,0,50],[50,50,50]]
+COLORS2 = [[0,0,0],[0,0,50],[50,0,0],[50,50,50]]
 
 DISPLAYS = {
-    'one'   : {'address' : '10.0.0.52', 'offset' : 4096},
-    'two'   : {'address' : '10.0.0.55', 'offset' : 0},
+    'one'   : {'address' : '10.0.0.52', 'offset' : 0},
+    'two'   : {'address' : '10.0.0.55', 'offset' : 4096},
     'three' : {'address' : '10.0.0.62', 'offset' : 4096*2}
     }
 
@@ -34,21 +35,30 @@ def get_frame_snapshot(screen):
         
     return ret
 
-def send_frame(pixels):
+def send_frame(colors,pixels):
                 
     data = b''
-    for pix in COLORS:
+    for pix in colors:
         print(pix)
         data = data + bytes(pix)
     
     for dis in DISPLAYS:
         cs = socket.socket(socket.AF_INET,socket.SOCK_STREAM)    
         cs.connect((DISPLAYS[dis]['address'],1234))        
-        cs.send(bytes([len(COLORS)-1]))    
+        cs.send(bytes([len(colors)-1]))    
         cs.send(data)
         start = DISPLAYS[dis]['offset']        
         cs.send(bytes(pixels[start:start+4096]))
-    
 
+pixels = get_frame_snapshot(2)  
+send_frame(COLORS1,pixels)  
+
+"""
 pixels = get_frame_snapshot(2)
-send_frame(pixels)
+SV = 0.1
+while True:
+    send_frame(COLORS1,pixels)
+    time.sleep(SV)
+    send_frame(COLORS2,pixels)
+    time.sleep(SV)
+"""

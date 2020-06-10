@@ -1,6 +1,13 @@
 """
-This chain is mapped as a 64*2 x 32 grid.
+  - Add this line to /etc/rc.local (before the exit 0):
+  -   /home/pi/ONBOOT.sh 2> /home/pi/ONBOOT.errors > /home/pi/ONBOOT.stdout &
+  - Add the following ONBOOT.sh script to /home/pi and make it executable:
+  
+#!/bin/bash
+cd /home/pi/megabugs
+python3 app_frame_viewer.py  
 """
+
 import time
 import sys
 import os
@@ -11,7 +18,9 @@ from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from rgbmatrix import graphics
 
 options = RGBMatrixOptions()
-        
+    
+# This chain is mapped as a 64*2 x 32 grid.
+    
 options.rows = 32 # 32 rows per display
 options.cols = 64 # 64 rows per display (64x32)
 options.chain_length = 2 # 2 displays per chain (128x32)

@@ -30,3 +30,24 @@ https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
 # Three PI version
 
 ![](art/threepi.jpg)
+
+# The installed demos
+
+Rebuild everything with default "regular". This wipes out the custom defaults provided by the
+adafruit bonet install.
+
+```
+make clean
+make
+```
+
+Disable the sound module on the pi (can still use USB sound cards):
+
+`dtparam=audio=off` in `/boot/config.txt`
+
+```
+sudo ./demo -D0 --led-cols=64 --led-rows=32 --led-chain=2 --led-parallel=3 --led-no-hardware-pulse
+```
+
+Still doesn't work for me. I have to use "no hardware pulse" or I get long color bar flickers.
+
