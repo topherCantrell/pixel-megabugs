@@ -49,6 +49,17 @@ def get_frame_snapshot(screen):
         
     return ret
 
+def dump_big_bug(pixels):
+    ret = []
+    for y in range(32):
+        row = []
+        for x in range(17):
+            row.append(pixels[(y+32)*128+(x+2)])
+        ret.append(row)
+    return ret
+            
+            
+
 def draw_frame(pixels,colors,canvas):
     for y in range(96):
         for x in range(128):
@@ -58,6 +69,7 @@ def draw_frame(pixels,colors,canvas):
 
 canvas = matrix.CreateFrameCanvas()
 pixels = get_frame_snapshot(2)
+print(dump_big_bug(pixels))
 draw_frame(pixels,COLORS,canvas)    
 matrix.SwapOnVSync(canvas)
 

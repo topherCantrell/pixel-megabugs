@@ -27,6 +27,10 @@ https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
 
 ![](art/frame.jpg)
 
+Exact dimension of front for black LED acrylic from TAP Plastics:
+
+30+1/4" x 22+5/8
+
 # Three PI version
 
 ![](art/threepi.jpg)
