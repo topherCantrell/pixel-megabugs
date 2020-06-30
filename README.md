@@ -1,19 +1,43 @@
-# rgb-megabugs
-Megabugs on an Adafruit six 64x32 (6mm pitch) RGB grid.
+# Poo Bugs
 
-That's six of these babies:
-https://www.adafruit.com/product/2276
+Reviving the old TRS80 Color Computer game "Mega-Bug" on a Raspberry Pi with an RGB matrix display.
 
-That makes a 128x96 pixel display -- exactly the same as megabugs on the CoCo.
+I used a Raspberry Pi 3B+: [https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV](https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV).
 
-Adafruit tutorial:<br>
-https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/
+I used six of these Adafruit panels to make the 128x96 display: [https://www.adafruit.com/product/2276](https://www.adafruit.com/product/2276). The final display is 30 x 22.5 inches.
 
-Bonnet:<br>
-https://www.adafruit.com/product/3211
+I used Henner Zeller's "active 3" board for the raspberry pi to drive the display: [https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter/active-3](https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter/active-3). The page has instructions for ordering boards from OSH Park. I got all the recommended parts from DigiKey. Follow links back up the repo for the code library, demos, and documentation.
 
-Multiple panels:<br>
-https://github.com/hzeller/rpi-rgb-led-matrix#panel-connection
+I covered the display with a 20x22.5 sheet of Chemcast Black LED Acrylic from TAP Plastics. TAP custom cut the sheet and shipped it to me: [https://www.tapplastics.com/black_led_sheet](https://www.tapplastics.com/black_led_sheet).
+
+I made the frame with boards and metal braces from my local Lowe's hardware store. See my discussion of the construction below.
+
+I used a 5V 60A LED driver to power the entire project: [https://www.amazon.com/gp/product/B07G7S44CW](https://www.amazon.com/gp/product/B07G7S44CW). I'm sure there are better options for this indoor project.
+
+The Pi has native sound, but the display board all of the Pi hardware. I used a USB sound card for sound: [https://www.amazon.com/gp/product/B07DBNFZJR](https://www.amazon.com/gp/product/B07DBNFZJR). 
+
+I used a pair of USB-powered speakers I found at Walmart. Something similar to: [https://www.amazon.com/AmazonBasics-Computer-Speakers-Desktop-USB-Powered/dp/B07D7TV5J3](https://www.amazon.com/AmazonBasics-Computer-Speakers-Desktop-USB-Powered/dp/B07D7TV5J3).
+
+I used a pair of USB gamepad controllers: [https://www.amazon.com/iNNEXT-Controller-Joystick-Gamestick-Raspberry/dp/B01N7ANDLC](https://www.amazon.com/iNNEXT-Controller-Joystick-Gamestick-Raspberry/dp/B01N7ANDLC)
+
+The software is all python. See my discussion of the software below.
+
+## Block Diagram
+
+![](art/block.jpg)
+
+## Constructing the Frame
+
+## The Software
+
+[Disassembled CoCo Code](http://computerarcheology.com/CoCo/Megabug/Code.html)
+
+[Live Play](https://www.youtube.com/watch?v=TQK982Kbe0s&t=16s)
+
+[Dung Beetles](https://www.youtube.com/watch?v=DlIxErE8Pgs)
+
+The game resolution for the CoCo Mega-Bug is 128x96 in 4 colors. My display matches that resolution exactly.
+
 
 If I am reading this right:
   - `led-rows=32` Each panel has 32 rows
@@ -27,25 +51,11 @@ https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
 
 ![](art/frame.jpg)
 
-Exact dimension of front for black LED acrylic from TAP Plastics:
+Exact dimension of the front for black LED acrylic from TAP Plastics: 30.25 x 22.625 inches.
 
-30+1/4" x 22+5/8
+# Software
 
-# Three PI version
-
-![](art/threepi.jpg)
-
-# The installed demos
-
-Rebuild everything with default "regular". This wipes out the custom defaults provided by the
-adafruit bonet install.
-
-```
-make clean
-make
-```
-
-Disable the sound module on the pi (can still use USB sound cards):
+Disable the sound module on the pi (you can still use USB sound cards):
 
 `dtparam=audio=off` in `/boot/config.txt`
 
