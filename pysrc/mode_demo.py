@@ -14,7 +14,7 @@ import pygame
 
 import mode_game
 
-DEMO_LOOPS = 150 # 000 
+DEMO_LOOPS = 200 # 000 
 
 def handle(clock,event_handler):
     #print('Mode: Demo')

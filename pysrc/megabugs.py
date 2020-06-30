@@ -20,19 +20,36 @@ clock = pygame.time.Clock()
 hardware.set_colors(GR.COLOR_PALETTE)
 
 # Just for demonstration/development
-def demo_events(event):       
-    if event.type==10 and event.joy==0 and event.button==4: # LEFT
+def demo_events(event):
+    
+    if event.joy!=0:
+        return None       
+    
+    alt = joystick.get_axis(0)!=0 or joystick.get_axis(1)!=0    
+    
+    if event.type==10 and event.button==1 and alt:
+        while True:
+            pygame.mixer.music.pause()
+            while True:
+                for evt in pygame.event.get():
+                    #print(evt)
+                    if evt.type==10 and evt.button==1:
+                        pygame.mixer.music.unpause()
+                        return None   
+                clock.tick(10) 
+    
+    if event.type==10 and event.button==4: # LEFT
         return "Mode: Win"
-    if event.type==10 and event.joy==0 and event.button==5: # RIGHT
+    if event.type==10 and event.button==5: # RIGHT
         return "Mode: Lose"
-    if event.type==10 and event.joy==0 and event.button==8: # SELECT
+    if event.type==10 and event.button==8: # SELECT
         return "Mode: Splash"
-    if event.type==10 and event.joy==0 and event.button==9: # START
-        if joystick.get_axis(0)<0:            
+    if event.type==10 and event.button==9: # START
+        if alt:            
             return "Mode: Demo"
         else:
             return "Mode: Game"    
-    if event.type==10 and event.joy==0 and event.button<4: # X,A,B,Y
+    if event.type==10 and event.button<4: # X,A,B,Y
         hardware.set_colors(GR.COLOR_STYLES[event.button])            
     return None
 
@@ -46,10 +63,11 @@ def app_events(event):
 if len(sys.argv)>1:
     # This is demonstration mode
     evts = demo_events        
-    mode = "Mode: Demo"
+    #mode = "Mode: Demo"
 else:
     evts = app_events
-    mode = "Mode: Splash"
+
+mode = "Mode: Splash"
 
 while True:
     if mode=='Mode: Splash':
