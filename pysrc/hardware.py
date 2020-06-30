@@ -1,6 +1,8 @@
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from rgbmatrix import graphics
 
+from frame import Frame
+
 """
 3 chains of 2 panels. Each panel is 64x32:
 
@@ -26,13 +28,18 @@ options.pwm_lsb_nanoseconds = 50
                 
 matrix = RGBMatrix(options = options)
 
-COLORS = [[0,0,0],[250,0,0],[0,0,250],[250,250,250]]
+# Some default colors
+COLORS = [[0,0,0],[250,0,0],[0,255,0],[0,0,250],[250,250,250]]
 
 def set_colors(colors):
     global COLORS
     COLORS = colors
+
+last_rendered_frame = Frame()
     
 def render_frame(frame,colors=None):
+    global last_rendered_frame
+    last_rendered_frame = frame
     if colors is None:
         colors = COLORS
     canvas = matrix.CreateFrameCanvas()

@@ -1,5 +1,6 @@
-import graphics as GR
 import random
+
+import graphics as GR
 from object_2d import Object2D
 
 class Bug(Object2D):        
@@ -9,8 +10,7 @@ class Bug(Object2D):
         self.animation = random.randint(0,1)
         self.every_other = random.randint(0,1)
         
-    def move(self,frame):
-        # Get surrounding directions
+    def move(self,frame):        
         
         # Always wiggle legs
         self.animation += 1
@@ -20,7 +20,8 @@ class Bug(Object2D):
         self.every_other+=1
         self.every_other&=1
         
-        if self.every_other:    
+        if self.every_other:
+            # Get surrounding directions    
             rev = (self.direction+2)&3   
             possibles = [] 
             eyes = self.look_at_maze(frame)

@@ -1,14 +1,8 @@
 import random
+from object_2d import Object2D
 
-class MegaMaze:
-    
-    DIR_OFFS = [
-        [0,-1], # 0 = Up
-        [1,0],  # 1 = Right
-        [0,1],  # 2 = Down
-        [-1,0]  # 3 = Left
-    ]
-    
+class Maze:
+        
     def __init__(self,width,height,loopiness):
         
         # Maze structure
@@ -74,8 +68,8 @@ class MegaMaze:
    
         
     def get_neighbor_coord(self,cx,cy,direction):
-        nx = cx + MegaMaze.DIR_OFFS[direction][0]
-        ny = cy + MegaMaze.DIR_OFFS[direction][1]
+        nx = cx + Object2D.DIR_OFFS[direction][0]
+        ny = cy + Object2D.DIR_OFFS[direction][1]
         if nx<0 or ny<0 or nx>=self._width or ny>=self._height:
             return None,None
         return nx,ny
@@ -115,6 +109,3 @@ class MegaMaze:
     
     def push_needs_visiting(self,cx,cy):
         return self._visit_next.append((cx,cy))
-    
-if __name__ == '__main__':
-    maze = MegaMaze(20,16,192)

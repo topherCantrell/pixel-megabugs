@@ -2,7 +2,7 @@
 class BitImage:
         
     def __init__(self,text,color_ofs=1):
-        self._images = []
+        self.images = []
         for ti in text:
             image = []            
             ti = ti.strip().split('\n')
@@ -16,8 +16,4 @@ class BitImage:
                         c = int(c,16)-1+color_ofs
                     row.append(c)
                 image.append(row)
-            self._images.append(image)        
-    
-    def get_images(self):
-        return self._images            
-    
+            self.images.append(image)        

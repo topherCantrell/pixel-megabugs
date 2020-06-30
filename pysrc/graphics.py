@@ -1,13 +1,15 @@
 
 from image import BitImage
+import copy
 
 '''
   00     Transparent  
   01-0F  Misc
-     01    Dot
-     02    Crumb
-     03    Lens border
-     04    Bug as dot
+     01     Dot
+     02     Crumb
+     03     Lens border
+     04     Bug as dot
+     05..08 Splash text colors
   10-1F  Maze wall
   20-2F  Mouth
   30-3F  Bug color
@@ -17,9 +19,12 @@ COLOR_DOT = 1
 COLOR_CRUMB = 2
 COLOR_LENS_BORDER = 3
 COLOR_BUG_AS_DOT = 4
-COLORS_MAZE_WALL = 0x10
-COLORS_MOUTH = 0x20
-COLORS_BUG = 0x30
+COLOR_SCORE = COLOR_LENS_BORDER
+COLORS_SPLASH_TEXT = 5 # 5,6,7,8
+#
+COLORS_MAZE_WALL = 0x10 # Future expansion: different kinds of walls
+COLORS_MOUTH = 0x20 # Future expansion: colorful magnified mouth
+COLORS_BUG = 0x30 
 
 COLOR_PALETTE = []
 for i in range(256):
@@ -30,6 +35,11 @@ COLOR_PALETTE[COLOR_CRUMB]          = [150, 75, 0]
 COLOR_PALETTE[COLOR_LENS_BORDER]    = [0xFF, 0xFF, 0xFF]
 COLOR_PALETTE[COLOR_BUG_AS_DOT]     = [0x00, 0x00, 0xFF]
 
+COLOR_PALETTE[COLORS_SPLASH_TEXT+0] = [0xFF, 0x00, 0x00]
+COLOR_PALETTE[COLORS_SPLASH_TEXT+1] = [0x00, 0xFF, 0x00]
+COLOR_PALETTE[COLORS_SPLASH_TEXT+2] = [0x00, 0x00, 0xFF]
+COLOR_PALETTE[COLORS_SPLASH_TEXT+3] = [0xFF, 0xFF, 0xFF]
+
 COLOR_PALETTE[COLORS_MAZE_WALL + 0] = [0xFF, 0x00, 0x00]
 COLOR_PALETTE[COLORS_MOUTH + 0]     = [0xFF, 0xFF, 0xFF]
 COLOR_PALETTE[COLORS_BUG + 0]       = [0x00, 0x00, 0xFF]
@@ -39,6 +49,33 @@ COLOR_PALETTE[COLORS_BUG + 2]       = [0x80, 0x00, 0xFF]
 # Magnified colors are the same as non -- for now
 for i in range(128):
     COLOR_PALETTE[i+128] = COLOR_PALETTE[i]
+    
+COLOR_STYLES = [
+    COLOR_PALETTE, # The default
+]
+
+# Invisible walls
+invs1 = copy.deepcopy(COLOR_PALETTE)
+invs1[COLORS_MAZE_WALL + 0] = [0x00,0x00,0x00]
+COLOR_STYLES.append(invs1)
+
+invs2 = copy.deepcopy(COLOR_PALETTE)
+invs2[COLORS_MAZE_WALL + 0 + 128] = [0x00,0x00,0x00]
+COLOR_STYLES.append(invs2)
+
+# Black and white unmagnified
+bw = copy.deepcopy(COLOR_PALETTE)
+bw[COLOR_DOT]            = [0xA0, 0xA0, 0xA0]
+bw[COLOR_CRUMB]          = [0x20, 0x20, 0x20]
+bw[COLOR_LENS_BORDER]    = [0xFF, 0xFF, 0xFF]
+bw[COLOR_BUG_AS_DOT]     = [0xFF, 0xFF, 0xFF]
+bw[COLORS_MAZE_WALL + 0] = [0xC0, 0xC0, 0xC0]
+bw[COLORS_MOUTH + 0]     = [0xFF, 0xFF, 0xFF]
+bw[COLORS_BUG + 0]       = [0x40, 0x40, 0x40]
+bw[COLORS_BUG + 1]       = [0x60, 0x60, 0x60]
+bw[COLORS_BUG + 2]       = [0x80, 0x80, 0x80]
+COLOR_STYLES.append(bw)
+
 
 LITTLE_BUG = BitImage([
     
@@ -975,9 +1012,10 @@ CHARS = BitImage([
 '''
 ])
 
+# Add a character mapping to the CHARS object
 order = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !-.:'"
 CHARS.CHAR_MAP = {}
 for i in range(len(order)):
-    CHARS.CHAR_MAP[order[i]] = CHARS._images[i]
+    CHARS.CHAR_MAP[order[i]] = CHARS.images[i]
     
 
