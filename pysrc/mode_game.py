@@ -14,6 +14,21 @@ import text
 import pygame
 
 HIGH_SCORE = 0
+MAN_WIN = False
+
+LOOPINESS = 192
+
+def manual_win():
+    global MAN_WIN
+    MAN_WIN = True
+    
+def more_loopiness():
+    global LOOPINESS
+    LOOPINESS = LOOPINESS//2
+    
+def reset_loopiness():
+    global LOOPINESS
+    LOOPINESS = 192
 
 def draw_maze(maze,pic):    
     
@@ -62,7 +77,7 @@ def handle(clock,joystick,event_handler):
     pic = Frame()
     
     # Draw the bugs
-    mega = Maze(20,16,192)
+    mega = Maze(20,16,LOOPINESS)
     draw_maze(mega._maze,pic)     
     
     # Draw the big bugs
@@ -95,6 +110,7 @@ def handle(clock,joystick,event_handler):
 def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):      
     
     global HIGH_SCORE
+    global MAN_WIN
                
     sound_eat = pygame.mixer.Sound('eat.wav')
                 
@@ -183,7 +199,9 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
             dots_eaten+=1
             sound_eat.play()
             
-            if dots_eaten == num_dots:
+            if MAN_WIN or dots_eaten >= num_dots:
+                
+                MAN_WIN = False
                                 
                 # "undraw" the magnifier
                 nf = Frame(mf)    

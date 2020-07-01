@@ -1,5 +1,7 @@
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from rgbmatrix import graphics
+from PIL import Image
+import time
 
 from frame import Frame
 
@@ -50,3 +52,8 @@ def render_frame(frame,colors=None):
             canvas.SetPixel(x,y,*colors[p])
     matrix.SwapOnVSync(canvas)
     
+def get_raw_canvas():
+    return matrix.CreateFrameCanvas()
+
+def render_raw_canvas(canvas):
+    matrix.SwapOnVSync(canvas)
