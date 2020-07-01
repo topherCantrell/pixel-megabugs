@@ -28,7 +28,11 @@ The software is all python. See my discussion of the software below.
 
 ## Constructing the Frame
 
-## The Software
+![](art/frame.jpg)
+
+Exact dimension of the front for black LED acrylic from TAP Plastics: 30.25 x 22.625 inches.
+
+# Software
 
 [Disassembled CoCo Code](http://computerarcheology.com/CoCo/Megabug/Code.html)
 
@@ -37,23 +41,6 @@ The software is all python. See my discussion of the software below.
 [Dung Beetles](https://www.youtube.com/watch?v=DlIxErE8Pgs)
 
 The game resolution for the CoCo Mega-Bug is 128x96 in 4 colors. My display matches that resolution exactly.
-
-
-If I am reading this right:
-  - `led-rows=32` Each panel has 32 rows
-  - `led-cols=64` Each panel has 64 columns
-  - `led-chains=2` Each chain has 2 panels (128x32)
-  - `led-parallel=3` Three chains (128x96)
-  
-https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md
-
-# The Frame
-
-![](art/frame.jpg)
-
-Exact dimension of the front for black LED acrylic from TAP Plastics: 30.25 x 22.625 inches.
-
-# Software
 
 Disable the sound module on the pi (you can still use USB sound cards):
 
@@ -65,3 +52,13 @@ sudo ./demo -D0 --led-cols=64 --led-rows=32 --led-chain=2 --led-parallel=3 --led
 
 Still doesn't work for me. I have to use "no hardware pulse" or I get long color bar flickers.
 
+Config parameters for the display library:
+  - `led-rows=32` Each panel has 32 rows
+  - `led-cols=64` Each panel has 64 columns
+  - `led-chains=2` Each chain has 2 panels (128x32)
+  - `led-parallel=3` Three chains (128x96)
+  - `led-no-hardware-pulse`
+  
+These need revisiting!
+  
+https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md

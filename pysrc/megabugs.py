@@ -30,7 +30,7 @@ def demo_events(event):
     
     alt = joystick.get_axis(0)!=0 or joystick.get_axis(1)!=0
     
-    if event.button==8 and alt:
+    if event.button==3 and alt:
         pygame.mixer.music.stop()
         from PIL import Image # Only needed for demo
         import time           # Only needed for demo
