@@ -1,5 +1,15 @@
 # Poo Bugs
 
+### As seen on Adafruit Show and Tell
+[![](art/adafruit.jpg)](https://www.adafruit.com/) <br>
+https://youtu.be/emKlJVrhkvA?t=2841
+
+## As seen on Youtube
+[![](art/youtube.jpg)](https://www.youtube.com/) <br>
+https://www.youtube.com/watch?v=5VSp-PirvBE
+
+## Reviving an old favorite
+
 Reviving the old TRS80 Color Computer game "Mega-Bug" on a Raspberry Pi with an RGB matrix display.
 
 I used a Raspberry Pi 3B+: [https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV](https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV).
