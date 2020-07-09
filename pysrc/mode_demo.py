@@ -37,9 +37,9 @@ def handle(clock,event_handler):
     mode_game.draw_maze(mega._maze,pic)     
     
     # Draw the big bugs
-    bugimage = GR.BIG_BUG.images
-    pic.draw_image(3,32,bugimage[0])
-    pic.draw_image(108,32,bugimage[0])
+    bugimage = GR.BIG_BUG
+    pic.draw_image(3,32,bugimage['standing'])
+    pic.draw_image(108,32,bugimage['standing'])
     
     # The mouth
     mouth = Mouth(25+10*4,17+8*4,random.randint(0,3))

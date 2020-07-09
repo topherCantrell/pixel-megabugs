@@ -54,7 +54,7 @@ def demo_events(event):
                 clock.tick(10) 
                 
     if event.button==4 and alt:
-        print('MAN WIN')
+        #print('MAN WIN')
         mode_game.manual_win()
         return None
     

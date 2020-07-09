@@ -12,7 +12,7 @@ def handle(clock):
     pygame.mixer.music.load('gotcha.wav')
     pygame.mixer.music.play()
         
-    bugimage = GR.BIG_BUG.images         
+    bugimage = GR.BIG_BUG      
     animation = 0   
     
     playing = True
@@ -21,9 +21,11 @@ def handle(clock):
             #print(event)
             if event.type==25:
                 playing = False
+                
+        #print(bugimage['dancing'])
                                             
-        last_maze_frame.draw_image(3,32,bugimage[animation+1])
-        last_maze_frame.draw_image(108,32,bugimage[animation+1])
+        last_maze_frame.draw_image(3,32,bugimage['dancing'][animation])
+        last_maze_frame.draw_image(108,32,bugimage['dancing'][animation])
         
         hardware.render_frame(last_maze_frame)
         
@@ -33,8 +35,8 @@ def handle(clock):
         clock.tick(4)
         
     for _ in range(8):                                                    
-        last_maze_frame.draw_image(3,32,bugimage[animation+1])
-        last_maze_frame.draw_image(108,32,bugimage[animation+1])        
+        last_maze_frame.draw_image(3,32,bugimage['dancing'][animation])
+        last_maze_frame.draw_image(108,32,bugimage['dancing'][animation])        
         hardware.render_frame(last_maze_frame)        
         animation+=1
         animation&=1            

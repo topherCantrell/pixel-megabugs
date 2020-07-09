@@ -9,10 +9,9 @@ def _translate_color(data,color):
                 ret[iy][ix] = color    
     return ret
 
-def draw_text(pic,x,y,text,colors,start=0):    
-    mp = GR.CHARS.CHAR_MAP    
+def draw_text(pic,x,y,text,colors,start=0):            
     for g in text:
-        pic.draw_image(x,y,_translate_color(mp[g],colors[start]))
+        pic.draw_image(x,y,_translate_color(GR.CHARS[g],colors[start]))
         x+=6
         start +=1
         if start>=len(colors):

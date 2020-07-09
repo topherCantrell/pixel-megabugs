@@ -5,7 +5,7 @@ class Maze:
         
     def __init__(self,width,height,loopiness):
         
-        print('LOOPINESS',loopiness)
+        #print('LOOPINESS',loopiness)
         
         # Maze structure
         self._width = width

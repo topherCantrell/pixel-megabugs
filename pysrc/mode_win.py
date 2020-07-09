@@ -50,7 +50,7 @@ def handle(clock):
             
             sound_step.play(0)
             for i in range(32):
-                nf.draw_image(0+i*8,y,GR.LITTLE_BUG.images[4+animation])
+                nf.draw_image(0+i*8,y,GR.LITTLE_BUG[2][animation])
             animation += 1
             animation &= 1 
             y = y + 2
@@ -76,7 +76,7 @@ def handle(clock):
             nf = Frame(acc)
             
             sound_step.play(0)
-            nf.draw_image(92,y,GR.LITTLE_BUG.images[4+animation])
+            nf.draw_image(92,y,GR.LITTLE_BUG[2][animation])
             animation += 1
             animation &= 1 
             y = y + 4

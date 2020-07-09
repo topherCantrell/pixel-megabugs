@@ -7,7 +7,7 @@ def draw_bugs_on_magnifier(pic,x,y,s,bugs):
     for bug in bugs:
         bx = (bug.x - x)*2+x -s//2
         by = (bug.y - y)*2+y -s//2
-        gr = GR.LITTLE_BUG.images[bug.direction*2+bug.animation]
+        gr = GR.LITTLE_BUG[bug.direction][bug.animation]
         for iy in range(6):
             for ix in range(6):
                 bix = bx-2+ix
@@ -18,7 +18,7 @@ def draw_bugs_on_magnifier(pic,x,y,s,bugs):
                         pic.set_pixel(bix,biy,bp)
 
 def draw_mouth_on_magnifier(pic,mouth):    
-    gr = GR.MOUTH.images[mouth.direction*2+mouth.animation]    
+    gr = GR.MOUTH[mouth.direction][mouth.animation]    
     hit_bug = False
     for iy in range(6):
         for ix in range(6):
