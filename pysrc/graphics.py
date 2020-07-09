@@ -2,6 +2,7 @@ import image
 import copy
 
 '''
+Color Palette:
   00     Transparent  
   01-0F  Misc
      01     Dot
@@ -14,6 +15,7 @@ import copy
   30-3F  Bug color
 '''
 
+# Constants to reference the palette
 COLOR_DOT = 1
 COLOR_CRUMB = 2
 COLOR_LENS_BORDER = 3
@@ -25,39 +27,41 @@ COLORS_MAZE_WALL = 0x10 # Future expansion: different kinds of walls
 COLORS_MOUTH = 0x20 # Future expansion: colorful magnified mouth
 COLORS_BUG = 0x30 
 
-COLOR_PALETTE = []
-for i in range(256):
-    COLOR_PALETTE.append([0,0,0])
+# Start with a black palette
+COLOR_PALETTE = [[0,0,0]]*256
 
-COLOR_PALETTE[COLOR_DOT]            = [0x00, 0xFF, 0x00]
-COLOR_PALETTE[COLOR_CRUMB]          = [150, 75, 0]
-COLOR_PALETTE[COLOR_LENS_BORDER]    = [0xFF, 0xFF, 0xFF]
-COLOR_PALETTE[COLOR_BUG_AS_DOT]     = [0x00, 0x00, 0xFF]
+# Add the individual colors
+COLOR_PALETTE[COLOR_DOT]            = [0x00, 0xFF, 0x00] # Green
+COLOR_PALETTE[COLOR_CRUMB]          = [0x96, 0x4B, 0x00] # Brown
+COLOR_PALETTE[COLOR_LENS_BORDER]    = [0xFF, 0xFF, 0xFF] # White
+COLOR_PALETTE[COLOR_BUG_AS_DOT]     = [0x00, 0x00, 0xFF] # Blue
 
-COLOR_PALETTE[COLORS_SPLASH_TEXT+0] = [0xFF, 0x00, 0x00]
-COLOR_PALETTE[COLORS_SPLASH_TEXT+1] = [0x00, 0xFF, 0x00]
-COLOR_PALETTE[COLORS_SPLASH_TEXT+2] = [0x00, 0x00, 0xFF]
-COLOR_PALETTE[COLORS_SPLASH_TEXT+3] = [0xFF, 0xFF, 0xFF]
+COLOR_PALETTE[COLORS_SPLASH_TEXT+0] = [0xFF, 0x00, 0x00] # Red
+COLOR_PALETTE[COLORS_SPLASH_TEXT+1] = [0x00, 0xFF, 0x00] # Green
+COLOR_PALETTE[COLORS_SPLASH_TEXT+2] = [0x00, 0x00, 0xFF] # Blue
+COLOR_PALETTE[COLORS_SPLASH_TEXT+3] = [0xFF, 0xFF, 0xFF] # White
 
-COLOR_PALETTE[COLORS_MAZE_WALL + 0] = [0xFF, 0x00, 0x00]
-COLOR_PALETTE[COLORS_MOUTH + 0]     = [0xFF, 0xFF, 0xFF]
-COLOR_PALETTE[COLORS_BUG + 0]       = [0x00, 0x00, 0xFF]
-COLOR_PALETTE[COLORS_BUG + 1]       = [0x00, 0xFF, 0xFF]
-COLOR_PALETTE[COLORS_BUG + 2]       = [0x80, 0x00, 0xFF]
+COLOR_PALETTE[COLORS_MAZE_WALL + 0] = [0xFF, 0x00, 0x00] # Red
+COLOR_PALETTE[COLORS_MOUTH + 0]     = [0xFF, 0xFF, 0xFF] # White
+COLOR_PALETTE[COLORS_BUG + 0]       = [0x00, 0x00, 0xFF] # Blue
+COLOR_PALETTE[COLORS_BUG + 1]       = [0x00, 0xFF, 0xFF] # Cyan
+COLOR_PALETTE[COLORS_BUG + 2]       = [0x80, 0x00, 0xFF] # Purple
 
-# Magnified colors are the same as non -- for now
+# Magnified colors start off the same as unmagnified
 for i in range(128):
     COLOR_PALETTE[i+128] = COLOR_PALETTE[i]
     
+# For demonstration of switching the color palette
 COLOR_STYLES = [
     COLOR_PALETTE, # The default
 ]
 
-# Invisible walls
+# Invisible walls on magnifier
 invs1 = copy.deepcopy(COLOR_PALETTE)
 invs1[COLORS_MAZE_WALL + 0] = [0x00,0x00,0x00]
 COLOR_STYLES.append(invs1)
 
+# Invisible walls outside magnifier
 invs2 = copy.deepcopy(COLOR_PALETTE)
 invs2[COLORS_MAZE_WALL + 0 + 128] = [0x00,0x00,0x00]
 COLOR_STYLES.append(invs2)
@@ -75,85 +79,51 @@ bw[COLORS_BUG + 1]       = [0x60, 0x60, 0x60]
 bw[COLORS_BUG + 2]       = [0x80, 0x80, 0x80]
 COLOR_STYLES.append(bw)
 
+# Graphics images
 
 LITTLE_BUG = [    
     #UP
     [
         ''' 
-            1.....
-            .1..1.
-            .222.1
-            1222..
-            .1..1.
-            .....1
-        ''',
+            1.....  .....1
+            .1..1.  .1..1.
+            .222.1  1222..
+            1222..  .222.1
+            .1..1.  .1..1.
+            .....1  1.....
         '''
-            .....1
-            .1..1.
-            1222..
-            .222.1
-            .1..1.
-            1.....
-        '''
-    ],
-    
+    ],    
     #RIGHT
     [
         '''
-            ..1..1    
-            .1..1. 
-            .222.. 
-            .222.. 
-            .1..1. 
-            1..1..     
-        ''',
+            ..1..1  1..1..   
+            .1..1.  .1..1.
+            .222..  .222..
+            .222..  .222..
+            .1..1.  .1..1.
+            1..1..  ..1..1    
         '''
-            1..1..
-            .1..1.
-            .222..
-            .222..
-            .1..1.
-            ..1..1
-        '''
-    ],
-    
+    ],    
     #DOWN
     [
         '''
-            1.....
-            .1..1.
-            .222.1
-            1222..
-            .1..1.
-            .....1
-        ''',
+            1.....  .....1
+            .1..1.  .1..1.
+            .222.1  1222..
+            1222..  .222.1
+            .1..1.  .1..1.
+            .....1  1.....
         '''
-            .....1
-            .1..1.
-            1222..
-            .222.1
-            .1..1.
-            1.....
-        '''
-    ],
-    
+    ],    
     #LEFT
     [
         '''
-            ..1..1    
-            .1..1. 
-            .222.. 
-            .222.. 
-            .1..1. 
-            1..1..     
-        ''',
-        '''
-            1..1..
-            .1..1.
-            .222..
-            .222..
-            .1..1.
-            ..1..1
+            ..1..1  1..1..    
+            .1..1.  .1..1. 
+            .222..  .222..
+            .222..  .222..
+            .1..1.  .1..1.
+            1..1..  ..1..1     
         '''
     ]    
 ]
@@ -307,6 +277,7 @@ CHARS = {
         ........ ........ ........ ........
         ........ ........ ........ ........
         ''',
+        
 '8':'''
     .111....
     1...1...
