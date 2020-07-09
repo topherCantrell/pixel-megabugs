@@ -36,7 +36,7 @@ def _from_string_rec(data,color_ofs=1):
     elif isinstance(data,dict):
         ret = {}
         for i in data:
-            res,typ,multi = _from_string_rec(data[i],color_ofs)
+            res,_typ,multi = _from_string_rec(data[i],color_ofs)
             if '`' in i:
                 ks = i.split('`')
                 for j in range(len(ks)):

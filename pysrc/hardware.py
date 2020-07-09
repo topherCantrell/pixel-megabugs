@@ -1,7 +1,6 @@
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from rgbmatrix import graphics
 from PIL import Image
-import time
 
 from frame import Frame
 
