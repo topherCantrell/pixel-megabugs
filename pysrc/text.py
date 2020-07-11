@@ -2,17 +2,20 @@ import graphics as GR
 import copy
 
 def _translate_color(data,color):
-    ret = copy.copy(data)
+    ret = copy.deepcopy(data)
     for iy in range(len(ret)):
         for ix in range(len(ret[iy])):
             if ret[iy][ix]:
                 ret[iy][ix] = color    
     return ret
 
-def draw_text(pic,x,y,text,colors,start=0):            
+def draw_text(pic,x,y,text,colors,start=0):      
+    if not isinstance(colors,list):
+        colors = [colors]          
     for g in text:
-        pic.draw_image(x,y,_translate_color(GR.CHARS[g],colors[start]))
-        x+=6
+        ch = _translate_color(GR.CHARS[g],colors[start])
+        pic.draw_image(x,y,ch)
+        x+=len(ch[0])
         start +=1
         if start>=len(colors):
             start = 0

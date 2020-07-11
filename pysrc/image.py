@@ -37,8 +37,8 @@ def _from_string_rec(data,color_ofs=1):
         ret = {}
         for i in data:
             res,_typ,multi = _from_string_rec(data[i],color_ofs)
-            if '`' in i:
-                ks = i.split('`')
+            if '|' in i:
+                ks = i.split('|')
                 for j in range(len(ks)):
                     ret[ks[j]] = res[j]                
             else:

@@ -91,10 +91,10 @@ def handle(clock,joystick,event_handler):
     # Don't start on a dot
     pic.set_pixel(mouth.x,mouth.y,0)        
     
-    text.draw_text(pic,33,4,'Time:',[GR.COLOR_SCORE])
-    text.draw_text(pic,33,84,'Score:',[GR.COLOR_SCORE])
-    text.draw_text(pic,69,4,'00:00',[GR.COLOR_SCORE])
-    text.draw_text(pic,75,84,'0000',[GR.COLOR_SCORE]) 
+    text.draw_text(pic,33,4,'Time:',GR.COLOR_SCORE)
+    text.draw_text(pic,33,84,'Score:',GR.COLOR_SCORE)
+    text.draw_text(pic,69,4,'00:00',GR.COLOR_SCORE)
+    text.draw_text(pic,75,84,'0000',GR.COLOR_SCORE) 
     
     transitions.wipe_in(pic)        
         
@@ -114,8 +114,8 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
                
     sound_eat = pygame.mixer.Sound('eat.wav')
                 
-    text.draw_text(mf,33,4,'Time:',[GR.COLOR_SCORE])
-    text.draw_text(mf,33,84,'Score:',[GR.COLOR_SCORE])     
+    text.draw_text(mf,33,4,'Time:',GR.COLOR_SCORE)
+    text.draw_text(mf,33,84,'Score:',GR.COLOR_SCORE)     
                 
     score = 0
     dots_eaten = 0
@@ -150,8 +150,8 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
         time_text = str(up_secs).rjust(2,'0') + ':'+str(low_secs).rjust(2,'0')    
         
         score_text = str(score).rjust(4,'0')
-        text.draw_text(nf,69,4,time_text,[GR.COLOR_SCORE])
-        text.draw_text(nf,75,84,score_text,[GR.COLOR_SCORE])    
+        text.draw_text(nf,69,4,time_text,GR.COLOR_SCORE)
+        text.draw_text(nf,75,84,score_text,GR.COLOR_SCORE)    
                         
         # Draw the bugs as dots        
         for bug in bugs:
@@ -182,8 +182,8 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
                         # "undraw" the magnifier
                         nf = Frame(mf)    
                         nf.set_pixel(mouth.x,mouth.y,0)            
-                        text.draw_text(nf,69,4,time_text,[GR.COLOR_SCORE])
-                        text.draw_text(nf,75,84,score_text,[GR.COLOR_SCORE]) 
+                        text.draw_text(nf,69,4,time_text,GR.COLOR_SCORE)
+                        text.draw_text(nf,75,84,score_text,GR.COLOR_SCORE) 
                         for bug in bugs:
                             nf.set_pixel(bug.x,bug.y,GR.COLOR_BUG_AS_DOT)    
                         hardware.render_frame(nf)      
@@ -206,8 +206,8 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
                 # "undraw" the magnifier
                 nf = Frame(mf)    
                 nf.set_pixel(mouth.x,mouth.y,0)            
-                text.draw_text(nf,69,4,time_text,[GR.COLOR_SCORE])
-                text.draw_text(nf,75,84,score_text,[GR.COLOR_SCORE]) 
+                text.draw_text(nf,69,4,time_text,GR.COLOR_SCORE)
+                text.draw_text(nf,75,84,score_text,GR.COLOR_SCORE) 
                 for bug in bugs:
                     nf.set_pixel(bug.x,bug.y,GR.COLOR_BUG_AS_DOT)    
                 hardware.render_frame(nf)                

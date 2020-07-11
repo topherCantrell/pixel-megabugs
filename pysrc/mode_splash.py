@@ -18,10 +18,10 @@ def handle(clock,event_handler):
     
     colors = [GR.COLORS_SPLASH_TEXT,GR.COLORS_SPLASH_TEXT+1,GR.COLORS_SPLASH_TEXT+2,GR.COLORS_SPLASH_TEXT+3]
     
-    text.draw_text(pic,22,14,'Bob Bishop',[GR.COLOR_CRUMB])
-    text.draw_text(pic,22,34,'Steve Bjork',[GR.COLOR_CRUMB])
-    text.draw_text(pic,22,44,'Datasoft 1982',[GR.COLOR_CRUMB])
-    text.draw_text(pic,22,74,'Chris Cantrell',[colors[1]])
+    text.draw_text(pic,22,14,'Bob Bishop',GR.COLOR_CRUMB)
+    text.draw_text(pic,22,34,'Steve Bjork',GR.COLOR_CRUMB)
+    text.draw_text(pic,22,44,'Datasoft 1982',GR.COLOR_CRUMB)
+    text.draw_text(pic,22,74,'Chris Cantrell',colors[1])
     
     text.draw_text(pic,10,4,'DUNG BEETLES',colors,color_start1)        
     text.draw_text(pic,10,24,'Mega-Bug',colors,color_start2)        

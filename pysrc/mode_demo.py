@@ -13,6 +13,7 @@ import text
 import pygame
 
 import mode_game
+import time
 
 DEMO_LOOPS = 200 # 000 
 
@@ -48,10 +49,34 @@ def handle(clock,event_handler):
     pic.set_pixel(mouth.x,mouth.y,0)
     
     hs = str(mode_game.HIGH_SCORE).rjust(4,'0')  
-    text.draw_text(pic,19,4,'High Score '+hs,[GR.COLOR_SCORE])
-    text.draw_text(pic,29,84,'Play PooBugs',[GR.COLOR_SCORE])   
+    text.draw_text(pic,19,4,'High Score '+hs,GR.COLOR_SCORE)
+    text.draw_text(pic,26,84,'Play Bit-Bugs',GR.COLOR_SCORE)   
     
-    transitions.wipe_in(pic)        
+    transitions.wipe_in(pic)      
+       
+    """
+    base_frame = Frame()
+    
+    base_frame.draw_image(10,15, GR.CHARS['A']) # The letter 'A'
+    base_frame.draw_text(5,5,    GR.CHARS,'Demonstration')
+    base_frame.draw_image(20,25, GR.BIG_BUG['standing']) # Bug standing
+    base_frame.draw_image(50,25, GR.BIG_BUG['dancing'][0]) # Bug dancing ...
+    base_frame.draw_image(70,25, GR.BIG_BUG['dancing'][1]) # ... two animations   
+    
+    direction = 1 # 0=UP, 1=RIGHT, 2=DOWN, 3=LEFT
+    animation = 0 # 0 or 1 ... two animations
+    
+    while True:
+        frame = Frame(base_frame)        
+             
+        frame.draw_image(10,60, GR.MOUTH[direction][animation])
+            
+        hardware.render_frame(frame)
+        
+        animation = (animation + 1) % 2
+    
+        time.sleep(0.25)  
+    """
         
     clock.tick(0.75)
     nf = MAG.draw_magnifier(pic,mouth.x-8,mouth.y-8,17)

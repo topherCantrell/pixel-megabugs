@@ -20,4 +20,4 @@ class Frame:
                 if ix+x<0 or ix+x>127 or iy+y<0 or iy+y>95:
                     continue
                 p[(iy+y)*128+ix+x] = data[iy][ix]
-                
+            
