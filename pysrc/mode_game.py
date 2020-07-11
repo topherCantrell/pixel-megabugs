@@ -111,6 +111,22 @@ def play_game(clock,joystick,mf,mouth,bugs,num_dots,event_handler):
     
     global HIGH_SCORE
     global MAN_WIN
+    
+    """
+    x,y = 62,46 # Near the center
+    img = GR.MOUTH[1][0] # Just for demo    
+    while True:
+        for evt in pygame.event.get(): 
+            if evt.type==pygame.JOYBUTTONDOWN and evt.button==1:
+                # Event is PRESS the A
+                x,y = 62,46 # Back to center
+        x = x + round(joystick.get_axis(0))
+        y = y + round(joystick.get_axis(1))
+        fr = Frame()        
+        fr.draw_image(x,y,img)
+        hardware.render_frame(fr)
+        clock.tick(10) # 10 frames per second
+    """
                
     sound_eat = pygame.mixer.Sound('eat.wav')
                 
