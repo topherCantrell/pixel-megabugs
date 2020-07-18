@@ -61,19 +61,21 @@ def _one_panel(src, dst, sx, sy, dx, forward, colors):
 
 
 def render_frame(frame,colors=None):
-    """
-    256,000 ... xxx,yyy    320,000 ... xxx,yyy
+    
+        
+    """    
+    000,000 >.. 063,000    064,000 >.. 128,000
     |                 |    |                 |
-    xxx,yyy ... 391,031    xxx,yyy ... 383,031
+    000,031 ... 063,031    064,031 ... 128,031    
     
     255,031 ... xxx,yyy    192,031 ... xxx,yyy
     |                 |    |                 |
     xxx,yyy ..< 192,000    191,000 ..< 128,000
     
-    000,000 >.. 063,000    064,000 >.. 128,000
+    256,000 ... xxx,yyy    320,000 ... xxx,yyy
     |                 |    |                 |
-    000,031 ... 063,031    064,031 ... 128,031
-    """
+    xxx,yyy ... 391,031    xxx,yyy ... 383,031
+    """    
 
     global last_rendered_frame 
     last_rendered_frame = frame
@@ -81,14 +83,14 @@ def render_frame(frame,colors=None):
         colors = COLORS
     canvas = matrix.CreateFrameCanvas()
 
-    _one_panel(frame, canvas, 0, 0, 256, True, colors)
-    _one_panel(frame, canvas, 64, 0, 320, True, colors)
+    _one_panel(frame, canvas, 0, 0, 0, True, colors)
+    _one_panel(frame, canvas, 64, 0, 64, True, colors)
     
     _one_panel(frame, canvas, 0,32, 192, False, colors)
     _one_panel(frame, canvas, 64,32, 128, False, colors)
     
-    _one_panel(frame, canvas, 0, 64, 0, True, colors)
-    _one_panel(frame, canvas, 64, 64, 64, True, colors)
+    _one_panel(frame, canvas, 0, 64, 256, True, colors)
+    _one_panel(frame, canvas, 64, 64, 320, True, colors)
     
     matrix.SwapOnVSync(canvas)
 

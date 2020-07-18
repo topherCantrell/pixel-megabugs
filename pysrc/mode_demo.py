@@ -50,7 +50,7 @@ def handle(clock,event_handler):
     
     hs = str(mode_game.HIGH_SCORE).rjust(4,'0')  
     text.draw_text(pic,19,4,'High Score '+hs,GR.COLOR_SCORE)
-    text.draw_text(pic,26,84,'Play Bit-Bugs',GR.COLOR_SCORE)   
+    text.draw_text(pic,26,84,'Play Giga-Bug',GR.COLOR_SCORE)   
     
     transitions.wipe_in(pic)      
        
