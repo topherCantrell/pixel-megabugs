@@ -39,6 +39,8 @@ The software is all python. See my discussion of the software below.
 
 ## Constructing the Frame
 
+The magnetic stand-offs that come with the displays hold the panels together on a wooden/metal frame.
+
 ![](art/frame.jpg)
 
 Exact dimension of the front for black LED acrylic from TAP Plastics: 30.25 x 22.625 inches.
