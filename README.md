@@ -1,4 +1,4 @@
-# Poo Bugs
+# Giga Bug
 
 ### As seen on Adafruit Show and Tell
 [![](art/adafruit.jpg)](https://www.adafruit.com/) <br>
