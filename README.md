@@ -16,7 +16,8 @@ I used a Raspberry Pi 3B+: [https://www.amazon.com/ELEMENT-Element14-Raspberry-P
 
 I used six of these Adafruit panels to make the 128x96 display: [https://www.adafruit.com/product/2276](https://www.adafruit.com/product/2276). The final display is 30 x 22.5 inches.
 
-I used Henner Zeller's "active 3" board for the raspberry pi to drive the display: [https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter/active-3](https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter/active-3). The page has instructions for ordering boards from OSH Park. I got all the recommended parts from DigiKey. Follow links back up the repo for the code library, demos, and documentation.
+I used the Adafruit RGB Matrix Bonnet for Raspberry Pi: [https://www.adafruit.com/product/3211](https://www.adafruit.com/product/3211). Adafruit has an extensive tutorial on wiring, drivers, and
+demos for the display: [https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/](https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/)
 
 I covered the display with a 20x22.5 sheet of Chemcast Black LED Acrylic from TAP Plastics. TAP custom cut the sheet and shipped it to me: [https://www.tapplastics.com/black_led_sheet](https://www.tapplastics.com/black_led_sheet).
 
