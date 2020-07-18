@@ -57,18 +57,19 @@ Disable the sound module on the pi (you can still use USB sound cards):
 
 `dtparam=audio=off` in `/boot/config.txt`
 
-```
-sudo ./demo -D0 --led-cols=64 --led-rows=32 --led-chain=2 --led-parallel=3 --led-no-hardware-pulse
-```
-
 Still doesn't work for me. I have to use "no hardware pulse" or I get long color bar flickers.
 
 Config parameters for the display library:
-  - `led-rows=32` Each panel has 32 rows
-  - `led-cols=64` Each panel has 64 columns
-  - `led-chains=2` Each chain has 2 panels (128x32)
-  - `led-parallel=3` Three chains (128x96)
-  - `led-no-hardware-pulse`
+
+  - options.hardware_mapping = 'adafruit-hat'
+  - options.rows = 32 # 32 rows per display
+  - options.cols = 64 # 64 rows per display (64x32)
+  - options.chain_length = 6
+  - options.parallel = 1
+  - options.disable_hardware_pulsing = False
+  - options.pwm_bits = 11
+  - options.gpio_slowdown = 2
+  - options.pwm_lsb_nanoseconds = 50
   
 These need revisiting!
   
